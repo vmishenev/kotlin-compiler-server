@@ -18,9 +18,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE
       - name: Checkout doc repository
       - uses: actions/checkout@v2
-      with:
+        with:
           path: main
-
 
       - name: Checkout verifier
       - uses: actions/checkout@v2
