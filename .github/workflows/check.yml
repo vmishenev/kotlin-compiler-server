@@ -46,7 +46,7 @@ jobs:
         run: ./gradlew dockerRun
       - name: Run verifier in Kotlin web site
         working-directory: ./verifier
-        run: run: ./client/build/install/client/bin/client collect -r https://github.com/JetBrains/kotlin-web-site -file-type HTML -f run-kotlin -commits ${{ github.event.before }},${{ github.event.after }} -out snippets
+        run: ./client/build/install/client/bin/client collect -r https://github.com/JetBrains/kotlin-web-site -file-type HTML -f run-kotlin -commits ${{ github.event.before }},${{ github.event.after }} -out snippets
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
