@@ -1,34 +1,84 @@
-name: Java CI
+# This workflow checks a repository named KotlinWebSiteSnippetsTests scheduled, then creates an Issue if needed.
 
-on: [push]
-schedule:
-    - cron: '*/60 * * * *'
+name: CI
 
+# This part controls when the workflow will run.
+on: 
+  schedule:
+    # Here you can set any schedule of workflow execution
+    - cron: "0 6 * * *"
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-
+  schedule-check:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout doc repository
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout doc repository
+      - uses: actions/checkout@v2
       with:
-        path: main
-
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.8
-
-    - name: Start application
-      run: ./gradlew build -x test
-    
-
-    - name: Run a compiler server
-      run: docker pull prendota/kotlin-compiler-server
-
-   # - name: Execution of snippets
-    #  working-directory: kotlin-compiler-server/src/test/resources/test-compile-data/jvm/KotlinWebSiteSnippetsTests/
-    #  run: (как передать файлы на исполнение серверу?)
+          path: main
 
 
+      - name: Checkout verifier
+      - uses: actions/checkout@v2
+        with:
+          repository: AlexanderPrendota/kotlin-samples-verifier
+          ref: feature_commits
+          path: verifier
+
+      - name: Set up JDK 1.8
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+        
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./verifier/gradlew
+      - name: Build with Gradle
+        working-directory: ./verifier
+        run: |
+             ./gradlew build -x test
+             ./gradlew installDist
+        
+      - name: Run a docker with compiler-server
+        working-directory: ./verifier
+        run: ./gradlew dockerRun
+      - name: Run verifier in Kotlin web site
+        working-directory: ./verifier
+        run: run: ./client/build/install/client/bin/client collect -r https://github.com/JetBrains/kotlin-web-site -file-type HTML -f run-kotlin -commits ${{ github.event.before }},${{ github.event.after }} -out snippets
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: extracted-snippets
+          path: ./verifier/snippets
+          retention-days: 5
+      
+      - name: Checkout pusher
+        uses: actions/checkout@v2
+        with:
+          repository: vmishenev/kotlin-samples-pusher
+          path: pusher
+          
+      - name: Move a file
+        run: mv ./verifier/snippets ./pusher/snippets
+        
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./pusher/gradlew
+        
+      - name: Build with Gradle
+        working-directory: ./pusher
+        run: |
+             ./gradlew build -x test
+             ./gradlew installDist
+      - name: Run pusher
+        working-directory: ./pusher
+        run: ./build/install/kotlin-samples-pusher/bin/kotlin-samples-pusher -in snippets -r https://github.com/kotushkens/kotlin-compiler-server -username ${{ secrets.TOKEN }} -path src/test/resources/test-compile-data/kotlin-web-site
+        
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
