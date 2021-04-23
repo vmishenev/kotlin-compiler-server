@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE
       - name: Checkout doc repository
       - uses: actions/checkout@v2
       with:
