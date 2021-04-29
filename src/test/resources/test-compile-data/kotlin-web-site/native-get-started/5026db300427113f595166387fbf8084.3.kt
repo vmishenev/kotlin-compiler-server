@@ -1,0 +1,1 @@
+fun String.countDistinctCharacters() = toLowerCase().toList().distinct().count()

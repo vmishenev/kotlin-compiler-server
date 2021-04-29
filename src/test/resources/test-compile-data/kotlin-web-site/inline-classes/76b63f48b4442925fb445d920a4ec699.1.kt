@@ -1,0 +1,1 @@
+inline class Password(val value: String)
