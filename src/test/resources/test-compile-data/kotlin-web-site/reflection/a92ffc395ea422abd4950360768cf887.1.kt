@@ -1,0 +1,1 @@
+fun isOdd(x: Int) = x % 2 != 0
