@@ -1,0 +1,1 @@
+class DontCreateMe private constructor () { /*...*/ }
