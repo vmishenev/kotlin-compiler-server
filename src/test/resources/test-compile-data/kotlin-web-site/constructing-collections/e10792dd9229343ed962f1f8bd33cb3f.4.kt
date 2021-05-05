@@ -1,0 +1,1 @@
+val numbersMap = mutableMapOf<String, String>().apply { this["one"] = "1"; this["two"] = "2" }
