@@ -1,0 +1,1 @@
+fun theAnswer() = 42
