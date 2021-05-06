@@ -1,0 +1,1 @@
+external fun foo(x: Int): Double
