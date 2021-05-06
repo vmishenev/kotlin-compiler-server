@@ -1,0 +1,1 @@
+class Example // Implicitly inherits from Any
