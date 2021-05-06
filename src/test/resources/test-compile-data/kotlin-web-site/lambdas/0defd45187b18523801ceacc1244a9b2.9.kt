@@ -1,0 +1,1 @@
+val sum: Int.(Int) -> Int = { other -> plus(other) } 
