@@ -1,0 +1,1 @@
+val mutableCollection: MutableSet<String> = HashSet()
