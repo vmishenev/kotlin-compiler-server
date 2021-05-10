@@ -1,0 +1,1 @@
+val l = 1L + 3 // Long + Int => Long
