@@ -1,0 +1,1 @@
+val a = { i: Int -> i + 1 } // The inferred type is (Int) -> Int
