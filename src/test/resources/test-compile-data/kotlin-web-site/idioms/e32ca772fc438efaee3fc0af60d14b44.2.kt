@@ -1,0 +1,1 @@
+val list = listOf("a", "b", "c")
