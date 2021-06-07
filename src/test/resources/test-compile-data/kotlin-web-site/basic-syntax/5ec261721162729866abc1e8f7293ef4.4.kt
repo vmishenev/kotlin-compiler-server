@@ -5,6 +5,6 @@ fun sum(a: Int, b: Int): Int {
 //sampleEnd
 
 fun main() {
-    print("sum of 3 and 5 is ")
+    print("sum  re ge eg of 3 and 5 is ")
     println(sum(3, 5))
 }
