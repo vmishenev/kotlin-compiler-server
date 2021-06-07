@@ -1,4 +1,3 @@
-fun main() {
-    println("Hello world!")
-    лдж
+fun main(args: Array<String>) {
+    println(args.contentToString())
 }

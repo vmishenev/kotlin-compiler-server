@@ -1,6 +1,6 @@
 fun main() {
 //sampleStart
-val s = "abc" + 1
-println(s + "def")
+    val s = "abc"
+    println("$s.length is ${s.length}") // prints "abc.length is 3"
 //sampleEnd
 }

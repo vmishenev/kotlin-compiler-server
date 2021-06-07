@@ -1,3 +1,6 @@
-fun main(args: Array<String>) {
-    println(args.contentToString())
+fun main() {
+//sampleStart
+    print("Hello ")
+    print("world!")
+//sampleEnd
 }

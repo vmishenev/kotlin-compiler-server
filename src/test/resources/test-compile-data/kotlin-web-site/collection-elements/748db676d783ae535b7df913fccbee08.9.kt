@@ -1,10 +1,11 @@
 fun main() {
 //sampleStart
     val numbers = listOf("one", "two", "three", "four", "five", "six")
-    println(numbers.contains("four"))
-    println("zero" in numbers)
+    println(numbers.isEmpty())
+    println(numbers.isNotEmpty())
     
-    println(numbers.containsAll(listOf("four", "two")))
-    println(numbers.containsAll(listOf("one", "zero")))
+    val empty = emptyList<String>()
+    println(empty.isEmpty())
+    println(empty.isNotEmpty())
 //sampleEnd
 }

@@ -1,7 +1,6 @@
+val String.lastChar: Char
+    get() = this[length - 1]
+
 fun main() {
-//sampleStart
-    class A(val p: Int)
-    val prop = A::p
-    println(prop.get(A(1)))
-//sampleEnd
+    println(String::lastChar.get("abc"))
 }

@@ -1,9 +1,10 @@
 fun main() {
-    val items = setOf("apple", "banana", "kiwifruit")
 //sampleStart
-    when {
-        "orange" in items -> println("juicy")
-        "apple" in items -> println("apple is fine too")
-    }
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits
+      .filter { it.startsWith("a") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
 //sampleEnd
 }

@@ -1,6 +1,7 @@
 fun main() {
 //sampleStart
-    val strs = listOf("a", "bc", "def")
-    println(strs.map(String::length))
+    class A(val p: Int)
+    val prop = A::p
+    println(prop.get(A(1)))
 //sampleEnd
 }

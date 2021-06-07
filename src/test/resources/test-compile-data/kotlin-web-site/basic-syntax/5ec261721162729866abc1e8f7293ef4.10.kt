@@ -1,7 +1,15 @@
-fun main() {
 //sampleStart
-    var x = 5 // `Int` type is inferred
-    x += 1
+val PI = 3.14
+var x = 0
+
+fun incrementX() { 
+    x += 1 
+}
 //sampleEnd
-    println("x = $x")
+
+fun main() {
+    println("x = $x; PI = $PI")
+    incrementX()
+    println("incrementX()")
+    println("x = $x; PI = $PI")
 }

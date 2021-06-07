@@ -1,6 +1,6 @@
-var y = 1
-
 fun main() {
-    ::y.set(2)
-    println(y)
+//sampleStart
+    val strs = listOf("a", "bc", "def")
+    println(strs.map(String::length))
+//sampleEnd
 }
