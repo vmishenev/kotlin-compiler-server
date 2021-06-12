@@ -1,6 +1,6 @@
 fun main() {
 //sampleStart
-    print("Hello ")
+    print("Helloffd ")
     print("world!")
 //sampleEnd
 }
