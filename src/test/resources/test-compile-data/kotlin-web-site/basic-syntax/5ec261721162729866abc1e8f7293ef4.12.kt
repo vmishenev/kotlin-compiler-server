@@ -1,12 +1,9 @@
+class Rectangle(var height: Double, var length: Double) {
+    var perimeter = (height + length) * 2 
+}
 fun main() {
 //sampleStart
-    var a = 1
-    // simple name in template:
-    val s1 = "a is $a" 
-    
-    a = 2
-    // arbitrary expression in template:
-    val s2 = "${s1.replace("is", "was")}, but now is $a"
+    val rectangle = Rectangle(5.0, 2.0)
+    println("The perimeter is ${rectangle.perimeter}")
 //sampleEnd
-    println(s2)
 }

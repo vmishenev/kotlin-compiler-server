@@ -1,9 +1,8 @@
 fun main() {
-    val items = setOf("apple", "banana", "kiwifruit")
+    val items = listOf("apple", "banana", "kiwifruit")
 //sampleStart
-    when {
-        "orange" in items -> println("juicy")
-        "apple" in items -> println("apple is fine too")
+    for (item in items) {
+        println(item)
     }
 //sampleEnd
 }

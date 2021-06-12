@@ -1,7 +1,10 @@
 //sampleStart
-fun sum(a: Int, b: Int) = a + b
+fun sum(a: Int, b: Int): Int {
+    return a + b
+}
 //sampleEnd
 
 fun main() {
-    println("sum of 19 and 23 is ${sum(19, 23)}")
+    print("sum  re ge eg of 3 and 5 is ")
+    println(sum(3, 5))
 }

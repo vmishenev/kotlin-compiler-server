@@ -1,9 +1,15 @@
-class Rectangle(var height: Double, var length: Double) {
-    var perimeter = (height + length) * 2 
-}
-fun main() {
 //sampleStart
-    val rectangle = Rectangle(5.0, 2.0)
-    println("The perimeter is ${rectangle.perimeter}")
+val PI = 3.14
+var x = 0
+
+fun incrementX() { 
+    x += 1 
+}
 //sampleEnd
+
+fun main() {
+    println("x = $x; PI = $PI")
+    incrementX()
+    println("incrementX()")
+    println("x = $x; PI = $PI")
 }

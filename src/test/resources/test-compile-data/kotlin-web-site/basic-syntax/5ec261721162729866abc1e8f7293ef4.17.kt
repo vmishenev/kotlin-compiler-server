@@ -1,10 +1,8 @@
 fun main() {
 //sampleStart
     val items = listOf("apple", "banana", "kiwifruit")
-    var index = 0
-    while (index < items.size) {
+    for (index in items.indices) {
         println("item at $index is ${items[index]}")
-        index++
     }
 //sampleEnd
 }
